@@ -1,1 +1,1 @@
-# CIS-Capstone
+# CIS-SMAD-Capstone
