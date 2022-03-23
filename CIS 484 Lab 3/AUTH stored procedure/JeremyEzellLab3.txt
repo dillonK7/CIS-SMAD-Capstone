@@ -1,0 +1,9 @@
+CREATE PROCEDURE [dbo].[sp_Login]
+	@Username NVARCHAR(50),
+	@UserPassword NVARCHAR(50)
+as 
+begin
+SELECT COUNT(*) 
+	FROM User_Credentials 
+	WHERE Username = @Username AND [UserPassword] = @UserPassword
+end

@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[sp_displayStudent]
+as
+begin
+Select [Students].[StudentID], [Students].[FirstName], [Students].[LastName], [Students].[Email], [Students].[PhoneNumber], [Students].[GradDate], [Students].[Major],
+[Students].[EmployStatus], ([Members].[FirstName] + ' ' + [Members].[LastName]) AS Mentor, [Students].resumeFile AS 'Student Resume'
+from students 
+LEFT JOIN Members ON (Students.MemberID) = (Members.MemberID)
+end

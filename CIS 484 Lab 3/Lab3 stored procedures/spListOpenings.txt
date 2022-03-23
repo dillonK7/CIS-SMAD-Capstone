@@ -1,0 +1,14 @@
+CREATE PROCEDURE [dbo].[sp_listOpenings]
+	@CompanyID NVARCHAR(10)
+as 
+begin
+Select  InternDesc as Positions, InternID as ID
+FROM Internship
+WHERE CompanyID = @CompanyID
+
+UNION 
+
+Select JobPosition, JobID
+From Job
+WHERE CompanyID = @CompanyID
+end

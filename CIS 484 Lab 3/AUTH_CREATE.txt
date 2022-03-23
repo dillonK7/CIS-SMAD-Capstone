@@ -1,0 +1,20 @@
+USE [AUTH]
+GO
+
+CREATE TABLE [dbo].[User_Credentials](
+	[UserID] [int] IDENTITY(1,1) NOT NULL,
+	[UserType] [varchar](10) NOT NULL,
+	[Username] [varchar](50) NOT NULL,
+	[UserPassword] [varchar](300) NOT NULL,
+ CONSTRAINT [UserID_pk] PRIMARY KEY (UserID)
+);
+
+INSERT INTO User_Credentials (UserType, Username, UserPassword) VALUES ('Admin', 'Admin', '1000:AYQ6heUv705tE2J4LCvUgdKoyCppIGvR:InSfeILGdye90tmjcIKn+wWk61U=');
+INSERT INTO User_Credentials (UserType, Username, UserPassword) VALUES ('Member', 'kirbabasN', '1000:cmeIr1NjohoY15t0IxSJaLLq5JgHiToD:yg9o7k9px+mUonXb9eUbVtNVxzo=');
+INSERT INTO User_Credentials (UserType, Username, UserPassword) VALUES ('Student', 'LaverE', '1000:danPzqh1iT+wF4d3gPX/J+XjKW6Hiw1n:cqZt3F1roelesRz4kycGbu/VUGw=');
+	
+
+
+
+
+

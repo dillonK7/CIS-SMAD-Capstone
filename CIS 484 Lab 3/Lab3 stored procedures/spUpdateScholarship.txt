@@ -1,0 +1,10 @@
+CREATE PROCEDURE [dbo].[sp_updateScholarship]  
+@ScholarshipName NVARCHAR(50),
+@ScholarshipYr NVARCHAR(50),
+@ScholarshipAmt NVARCHAR(50),
+@ScholarshipID NVARCHAR(50)
+as 
+begin 
+UPDATE Scholarship Set ScholarshipName = @ScholarshipName, ScholarshipYr = @ScholarshipYr, ScholarshipAmt = @ScholarshipAmt
+WHERE ScholarshipID = @ScholarshipID
+end 

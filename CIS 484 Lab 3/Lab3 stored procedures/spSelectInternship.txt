@@ -1,0 +1,7 @@
+CREATE PROCEDURE [dbo].[sp_SelectInternship]
+as 
+begin
+Select InternID, InternDesc, InternYr, StartDate, EndDate, Company.CompanyName 
+From Internship, Company 
+WHERE Company.CompanyID = Internship.CompanyID
+end

@@ -1,0 +1,11 @@
+CREATE PROCEDURE [dbo].[sp_updateJobAppJ]
+	@AppStatus as NVARCHAR(50),
+	@JAppID as NVARCHAR(50),
+	@Student as NVARCHAR(50),
+	@Major as NVARCHAR(50),
+	@JobPosition as NVARCHAR(50),
+	@CompanyName as NVARCHAR(50)
+as 
+begin
+UPDATE [jobApp] SET [jobApp].[AppStatus] = @AppStatus WHERE [JAppID] = @JAppID
+end

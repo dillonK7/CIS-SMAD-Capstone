@@ -1,0 +1,13 @@
+CREATE PROCEDURE [dbo].[sp_updateCompany] 
+@CompanyName as NVARCHAR(50),
+@CompanyEmail as NVARCHAR(50),
+@CompanyState as NVARCHAR(50),
+@CompanyCity as NVARCHAR(50),
+@CompanyStreet as NVARCHAR(50),
+@CompanyZip as NVARCHAR(50),
+@CompanyID as NVARCHAR(50)
+as 
+begin 
+UPDATE [Company] SET [CompanyName] = @CompanyName, [CompanyEmail] = @CompanyEmail, [CompanyState] = @CompanyState, 
+[CompanyCity] = @CompanyCity, [CompanyStreet] = @CompanyStreet, [CompanyZip] = @CompanyZip WHERE [CompanyID] = @CompanyID
+end

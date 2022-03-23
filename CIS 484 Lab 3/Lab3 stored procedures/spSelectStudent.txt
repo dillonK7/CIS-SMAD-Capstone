@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[sp_selectStudent]
+	@SUsername NVARCHAR(50)
+as
+begin
+Select [StudentID], [SUsername], [FirstName], 
+[LastName], [Email], [PhoneNumber], [GradDate], 
+[Major], [EmployStatus], [resumeFile] FROM [Students] WHERE ([SUsername] = @SUsername)
+end

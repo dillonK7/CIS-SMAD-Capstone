@@ -1,0 +1,146 @@
+CREATE TABLE [dbo].[AccountApp](
+	[UserAppID] [int] IDENTITY(1,1) NOT NULL,
+	[UserType] [varchar](50) NOT NULL,
+	[Username] [varchar](50) NOT NULL,
+	[UserPassword] [varchar](300) NULL,
+	[FirstName] [varchar](50) NOT NULL,
+	[LastName] [varchar](50) NOT NULL,
+	[Email] [varchar](50) NOT NULL,
+	[PhoneNumber] [varchar](50) NULL,
+	[GradDate] [varchar](50) NULL,
+	[Major] [varchar](50) NULL,
+	[EmployStatus] [varchar](50) NULL,
+	[AppStatus] [varchar](20) NULL,
+ CONSTRAINT [pk_UserID] PRIMARY KEY (UserAppID)
+
+);
+
+CREATE TABLE Members (
+	MemberID int NOT NULL IDENTITY(1,1),
+	MUsername VARCHAR(50) NOT NULL,
+	FirstName VARCHAR(50),
+	LastName VARCHAR(50),
+	Email VARCHAR(50),
+	PhoneNumber VARCHAR(10),
+	GradDate date,
+	Major VARCHAR(50),
+	UserAppID int
+	CONSTRAINT memberid_pk PRIMARY KEY (MemberID),
+	CONSTRAINT UserAppIDM_fk FOREIGN KEY (UserAppID) REFERENCES AccountApp(UserAppID)
+);
+
+INSERT INTO Members (MUserName, FirstName, LastName, Email, PhoneNumber, GradDate, Major) VALUES 
+('kirbabasN', 'Nick', 'Kirbabas', 'kirbabnx@dukes.com', '7031111111', '05/13/2000', 'CIS'); 
+
+
+
+CREATE TABLE Students (
+	StudentID int NOT NULL IDENTITY(1,1),
+	SUsername VARCHAR(50) NOT NULL,
+	FirstName VARCHAR(50),
+	LastName VARCHAR(50),
+	Email VARCHAR(50),
+	PhoneNumber VARCHAR(10),
+	GradDate date,
+	Major VARCHAR(50),
+	EmployStatus VARCHAR(50),
+	MemberID int,
+	UserAppID int,
+	resumeFile VARCHAR(100)
+	CONSTRAINT StudentID_pk PRIMARY KEY (StudentID),
+	CONSTRAINT FK_MemberID FOREIGN KEY (MemberID) 
+	REFERENCES Members(MemberID),
+CONSTRAINT UserAppIDS_fk FOREIGN KEY (UserAppID) REFERENCES AccountApp(UserAppID)
+);
+
+INSERT INTO Students (SUsername, FirstName, LastName, Email, PhoneNumber, GradDate, Major, EmployStatus) VALUES 
+('LaverE', 'Elijah', 'Laver', 'LaverE@gmail.com', '7034444444', '05/13/2022', 'CIS', 'Unemployed');
+
+CREATE TABLE Scholarship (
+	ScholarshipID int NOT NULL IDENTITY(1,1),
+	ScholarshipName VARCHAR(50),
+	ScholarshipAmt VARCHAR(10),
+	ScholarshipYr VARCHAR(4), 
+	CONSTRAINT ScholarshipID_pk PRIMARY KEY (ScholarshipID)
+);
+
+INSERT INTO Scholarship (ScholarshipName, ScholarshipAmt, ScholarshipYr) VALUES
+('DukeGroup Participation Award', '10.00', '2022')
+INSERT INTO Scholarship (ScholarshipName, ScholarshipAmt, ScholarshipYr) VALUES
+('Super Smart Award', '5000.00', '2022')
+INSERT INTO Scholarship (ScholarshipName, ScholarshipAmt, ScholarshipYr) VALUES
+('Spare Couch Change Award', '0.53', '2022')
+
+CREATE TABLE Applications (
+	AppID int NOT NULL IDENTITY(1,1),
+	StudentID int not NULL,
+	ScholarshipID int NOT NULL,
+	AppDate date,
+	AppText VARCHAR(100),
+	AppStatus VARCHAR(20),
+	CONSTRAINT AppID_pk PRIMARY KEY (AppID),
+	CONSTRAINT FK_StudentID FOREIGN KEY (StudentID)
+	REFERENCES Students(StudentID),
+	CONSTRAINT FK_ScholarshipID FOREIGN KEY (ScholarshipID)
+	REFERENCES Scholarship(ScholarshipID)
+);
+
+CREATE TABLE Company (
+	CompanyID int NOT NULL IDENTITY(1,1),
+	CompanyName VARCHAR(50),
+	CompanyEmail VARCHAR(70),
+	CompanyState VARCHAR(50),
+	CompanyCity VARCHAR(50),
+	CompanyStreet VARCHAR(50),
+	CompanyZip VARCHAR(10)
+	CONSTRAINT CompanyID_pk PRIMARY KEY (CompanyID)
+);
+
+INSERT INTO Company(CompanyName, CompanyEmail, CompanyState, CompanyCity, CompanyStreet, CompanyZip)
+VALUES('Deloitte', 'deloitte@gmail.com', 'Virginia', 'Arlington', '123 Street', '22030')
+
+
+CREATE TABLE Internship (
+	InternID int NOT NULL IDENTITY(1,1),
+	InternDesc VARCHAR(70),
+	InternYr VARCHAR(20),
+	StartDate Date,
+	EndDate Date,
+	CompanyID int NOT NULL,
+	CONSTRAINT InternID_pk PRIMARY KEY (InternID),
+	CONSTRAINT FK_CompanyID FOREIGN KEY (CompanyID)
+	REFERENCES Company(CompanyID)	
+);
+
+CREATE TABLE Job (
+	JobID int NOT NULL IDENTITY(1,1),
+	CompanyID int NOT NULL,
+	JobPosition VARCHAR(50),
+	StartDate Date,
+	EndDate Date, 
+	CONSTRAINT JobID_pk PRIMARY KEY (JobID),
+	CONSTRAINT FK_CompanyIDJob FOREIGN KEY (CompanyID)
+	REFERENCES Company(CompanyID)
+
+);
+
+CREATE TABLE jobApp (
+	JAppID int NOT NULL IDENTITY(1,1),
+	StudentID int NOT NULL,
+	InternID int,
+	JobID int, 
+	ApplyDate date, 
+	AppStatus VARCHAR(20),
+	CONSTRAINT JAppID_pk PRIMARY KEY (JAppID),
+	CONSTRAINT FK_StuJobID FOREIGN KEY (StudentID)
+	REFERENCES Students(StudentID),
+	CONSTRAINT FK_InternID FOREIGN KEY (InternID)
+	REFERENCES Internship(InternID),
+	CONSTRAINT FK_JobID FOREIGN KEY (JobID)
+	REFERENCES Job(JobID)
+
+);
+
+
+
+

@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[sp_selectMember] 
+	@MUsername NVARCHAR(50)
+as 
+begin
+	Select [MemberID], [MUsername], [FirstName], [LastName], [Email], [PhoneNumber], [GradDate], 
+	[Major] 
+	FROM [Members] WHERE ([MUsername] = @MUsername)
+end

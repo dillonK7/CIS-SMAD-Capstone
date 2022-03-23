@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[sp_displayMembers] 
+as
+begin
+	Select Members.MemberID, Members.MUsername, 
+	Members.FirstName, Members.LastName, Members.Email, 
+	Members.PhoneNumber, Members.GradDate, Members.Major, (Students.FirstName + ' ' + Students.LastName) as StudentName
+	from Members left join Students on Members.MemberID = Students.MemberID
+end

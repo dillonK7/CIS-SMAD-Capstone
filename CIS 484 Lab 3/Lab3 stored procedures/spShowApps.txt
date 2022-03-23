@@ -1,0 +1,8 @@
+CREATE PROCEDURE [dbo].[sp_showApps]
+	@UserAppID NVARCHAR(10)
+as
+begin
+SELECT UserAppID, UserType, FirstName, LastName, Email, PhoneNumber, GradDate, Major, EmployStatus, AppStatus
+FROM AccountApp
+WHERE UserAppID = @UserAppID
+end

@@ -1,0 +1,10 @@
+CREATE PROCEDURE [dbo].[sp_displayJApps]
+as
+begin
+select JAppID, (Students.FirstName + ' ' + Students.LastName) As Student, Students.Major, 
+[Job].[JobPosition], Company.CompanyName, jobApp.AppStatus, Students.resumeFile
+from Company left join Job ON Company.CompanyID = [Job].[CompanyID] 
+left join jobApp ON [Job].[JobID] = jobApp.JobID  
+left join Students ON JobApp.StudentID = Students.StudentID
+where jobApp.JobID IS NOT NULL;
+end

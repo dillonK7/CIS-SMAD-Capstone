@@ -1,0 +1,13 @@
+CREATE PROCEDURE [dbo].[sp_displayStuScholar]
+	@ScholarshipID NVARCHAR(50)
+as 
+begin
+
+SELECT Students.StudentID , FirstName + ' ' + LastName AS UserInfo, Students.Major, 
+Students.Email, Students.GradDate, Scholarship.ScholarshipName, Applications.AppStatus
+FROM Students 
+LEFT JOIN Applications ON Students.StudentID = Applications.StudentID 
+LEFT JOIN Scholarship ON Applications.ScholarshipID = Scholarship.ScholarshipID
+WHERE Applications.StudentID = Students.StudentID AND Scholarship.ScholarshipID = @ScholarshipID;
+
+end

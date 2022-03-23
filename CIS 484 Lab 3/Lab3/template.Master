@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="template.Master.cs" Inherits="Lab3.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>Kirbabas DukeGroup</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:Image ID="pageLogo" runat="server" ImageUrl="/images/DukeGroupLogo.png" Width="1159px" Height="289px"/>
+            <div style="margin:50px">
+          
+                <asp:HyperLink ID="HLHome" runat="server" Text="Home" NavigateUrl="~/Home.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                <asp:HyperLink ID="HLSignUp" runat="server" Text="Students" NavigateUrl="~/StudentPage.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                <asp:HyperLink ID="HLMemberSignUp" runat="server" Text="Members" NavigateUrl="~/MemberPage.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                <asp:HyperLink ID="HLMentorship" runat="server" Text="Mentorship" NavigateUrl="~/Mentorship.aspx" Visible="false"></asp:HyperLink> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <asp:HyperLink ID="HLScholarships" runat="server" Text="Scholarships" NavigateUrl="~/Scholarship.aspx" Visible="false" 
+                    ClientIDMode="Predictable"></asp:HyperLink>   
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HLInternship" runat="server" Text="Internships" NavigateUrl="~/Internships.aspx" Visible="false"></asp:HyperLink> 
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <asp:HyperLink ID="HLJobs" runat="server" Text="Job Listings" NavigateUrl="~/JobCreation.aspx" Visible="false"></asp:HyperLink>
+
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                <asp:HyperLink ID="HLScholarApp" runat="server" Text="Scholarship Applications" NavigateUrl="~/Application.aspx" Visible="false"></asp:HyperLink> 
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    
+                <asp:HyperLink ID="HLStudentApply" runat="server" Text="Scholarship Applications" NavigateUrl="~/StudentApply.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HLCompanies" runat="server" Text="Companies" NavigateUrl="~/Companies.aspx" Visible="false"></asp:HyperLink>
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
+                <asp:HyperLink ID="HLCareers" runat="server" Text="Job Opportunities" NavigateUrl="~/CareerApply.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                <asp:HyperLink ID="HLUserApps" runat="server" Text="User Applications" NavigateUrl="~/UserApps.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HLCareerApp" runat="server" Text="Job Applications" NavigateUrl="~/CareerApplications.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  
+                <asp:HyperLink ID="HLAccountInfo" runat="server" Text="Account Details" NavigateUrl="~/AccountInfo.aspx" Visible="false"></asp:HyperLink>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <asp:HyperLink ID="HLMemberPage" runat="server" Text="Account Details" NavigateUrl="~/MemberPage.aspx" Visible="false"></asp:HyperLink>
+
+
+            </div> 
+            <div style="margin-left: 1050px">
+            <asp:Label ID="lblLoggedIn" runat="server" Text=""></asp:Label>
+            <asp:Button ID="btnLogOut" runat="server" Text="Log Out" OnClick="btnLogOut_Click" UseSubmitBehavior="false"/>
+            </div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server" >
+            </asp:ContentPlaceHolder>
+        
+        
+    </form>
+</body>
+</html>
